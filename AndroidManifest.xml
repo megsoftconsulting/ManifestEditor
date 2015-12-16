@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.afl.gemini" android:versionCode="169" android:versionName="1.1.5">
+	<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="19" />
+	<application android:theme="@android:style/Theme.Holo.Light" android:icon="@drawable/icon" android:label="Rogue">
+		<provider android:name="gemini.providers.ProjectProvider" android:authorities="com.afl.gemini" android:exported="false" android:syncable="true" />
+	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.USE_CREDENTIALS" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.READ_SYNC_STATS" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+</manifest>

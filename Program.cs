@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
@@ -20,7 +21,7 @@ namespace Manifest
         {
             var builder = new StringBuilder();
             builder.AppendLine("=====================================");
-            builder.AppendLine("Android Manifest Editor v.0.1");
+            builder.AppendLine($"Android Manifest Editor v{Assembly.GetCallingAssembly().GetName().Version})");
             builder.AppendLine("=====================================");
 
             return builder.ToString();
@@ -30,7 +31,7 @@ namespace Manifest
         {
             var builder = new StringBuilder();
             builder.AppendLine("=====================================");
-            builder.AppendLine("Android Manifest Editor  v.0.1");
+            builder.AppendLine($"Android Manifest Editor v{Assembly.GetCallingAssembly().GetName().Version})");
             builder.AppendLine("=====================================");
             builder.AppendLine("Usage: setversioncode filename versionCode packageid");
             builder.AppendLine("Example:setversioncode manifest.xml 150 com.acme.dev");

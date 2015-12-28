@@ -69,21 +69,29 @@ namespace Manifest
                 //var file = System.IO.File.ReadAllText(manifestFilePath);
                 var element = XElement.Load(manifestFilePath);
                 var attributes = element.Attributes().ToList();
-
+                
                 // Update Version Code
                 var versionAttribute = attributes
                     .FirstOrDefault(a => a.Name.LocalName.Equals("versionCode"));
 
-                if (versionAttribute != null) versionAttribute.Value = versionCode;
+                if (versionAttribute != null)
+                    versionAttribute.Value = versionCode;
 
                 // Update Package ID
                 var packageAttribute = attributes
                     .FirstOrDefault(a => a.Name.LocalName.Equals("package"));
 
-                if (packageAttribute != null && !string.IsNullOrEmpty(packageId)) packageAttribute.Value = packageId;
+                if (packageAttribute != null && !string.IsNullOrEmpty(packageId))
+                    packageAttribute.Value = packageId;
 
+                //android:
+                //authorities
+                var authoritiesAttribute = GetAuthoritiesAttribute(element);
 
-                element.Save(manifestFilePath );
+                if (authoritiesAttribute != null)
+                    authoritiesAttribute.Value = packageId;
+
+                 element.Save(manifestFilePath );
             }
             catch (FileNotFoundException)
             {
@@ -95,6 +103,15 @@ namespace Manifest
            // Console.WriteLine("Press ENTER to continue....");
            Console.ReadLine();
             return (int) ExitCode.Success;
+        }
+
+        private static XAttribute GetAuthoritiesAttribute(XElement element)
+        {
+            var applicationElement = element.Elements().FirstOrDefault(x => x.Name == "application");
+            var providerElement = applicationElement?.Elements().Where(x => x.Name == "provider");
+            var authoritiesAttribute =
+                providerElement?.Attributes().FirstOrDefault(x => x.Name.LocalName.Equals("authorities"));
+            return authoritiesAttribute;
         }
     }
 }
